@@ -14,7 +14,7 @@ function createGrid() {
     const divWidth = container.clientWidth / GENERAL_WIDTH;
     const divHeight = container.clientHeight / GENERAL_HEIGHT;
     for (let i = 0; i < GENERAL_WIDTH; i++) {
-        for (let j = 0; j < GENERAL_HEIGHT; j ++) {
+        for (let j = 0; j < GENERAL_HEIGHT; j++) {
             const div = createSquareDiv(divWidth, divHeight);
             container.appendChild(div);
         }
@@ -29,5 +29,19 @@ window.addEventListener("resize", () => {
         i.style.height = `${divHeight}px`;
     }
 })
+
+container.addEventListener("mouseover", event => {
+    event.target.classList.add("black");
+});
+
+/* container.addEventListener("mouseout", event => {
+    setTimeout(() => {
+        event.target.style.backgroundColor = "white";
+    }, 1000);
+}) */
+
+/* container.addEventListener("mousedown", event => {
+    event.target.style.backgroundColor = "black";
+}) */
 
 createGrid();

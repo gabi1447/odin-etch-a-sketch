@@ -4,11 +4,25 @@
     padding: 0;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    gap: 1rem;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     flex: auto;
-    width: 100vw;
-    height: 100vh;
-    /* background-color: red; */
+    width: 70vw;
+    height: 70vh;
+}
+
+.black {
+    background-color: black;
 }
