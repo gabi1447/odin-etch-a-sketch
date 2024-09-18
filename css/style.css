@@ -9,20 +9,30 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    padding: 3rem;
+    padding: 1rem 3rem;
     gap: 1rem;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    flex: auto;
-    width: 70vw;
-    height: 70vh;
+    /* flex: 1; */
+    width: 65vw;
+    height: 80vh;
+
 }
 
 .black {
     background-color: black;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+#dimensions {
+    padding: 0.25rem 2rem;
+    font-weight: bold;
 }

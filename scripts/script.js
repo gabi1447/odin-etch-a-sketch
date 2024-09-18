@@ -1,20 +1,21 @@
 const container = document.querySelector(".container");
-const GENERAL_WIDTH = 16;
-const GENERAL_HEIGHT = 16;
+const dimensionsButton = document.querySelector("#dimensions");
+let grid_width = 100;
+let grid_height = 100;
 
-function createSquareDiv(width, height) {
+function createSquareDiv(divWidth, divHeight) {
     const div = document.createElement('div');
-    div.style.width = `${width}px`;
-    div.style.height = `${height}px`;
+    div.style.width = `${divWidth}px`;
+    div.style.height = `${divHeight}px`;
     div.style.border = "1px solid black";
     return div;
 }
 
-function createGrid() {
-    const divWidth = container.clientWidth / GENERAL_WIDTH;
-    const divHeight = container.clientHeight / GENERAL_HEIGHT;
-    for (let i = 0; i < GENERAL_WIDTH; i++) {
-        for (let j = 0; j < GENERAL_HEIGHT; j++) {
+function createGrid(gridWidth, gridHeight) {
+    const divWidth = container.clientWidth / gridWidth;
+    const divHeight = container.clientHeight / gridHeight;
+    for (let i = 0; i < gridWidth; i++) {
+        for (let j = 0; j < gridHeight; j++) {
             const div = createSquareDiv(divWidth, divHeight);
             container.appendChild(div);
         }
@@ -22,26 +23,33 @@ function createGrid() {
 }
 
 window.addEventListener("resize", () => {
-    const divWidth = container.clientWidth / GENERAL_WIDTH;
-    const divHeight = container.clientHeight / GENERAL_HEIGHT;
+    const divWidth = container.clientWidth / grid_width;
+    const divHeight = container.clientHeight / grid_height;
     for (let i of container.childNodes) {
         i.style.width = `${divWidth}px`;
         i.style.height = `${divHeight}px`;
     }
-})
+});
 
 container.addEventListener("mouseover", event => {
+    if (event.target === event.currentTarget) {
+        return;
+    }
     event.target.classList.add("black");
 });
 
-/* container.addEventListener("mouseout", event => {
-    setTimeout(() => {
-        event.target.style.backgroundColor = "white";
-    }, 1000);
-}) */
+dimensionsButton.addEventListener("click", () => {
+    const gridDimensions = prompt("Enter a number to represent the dimensions of your grid", "e.g. Enter 16 to generate a 16x16 grid");
 
-/* container.addEventListener("mousedown", event => {
-    event.target.style.backgroundColor = "black";
-}) */
+    if (gridDimensions < 0 || gridDimensions > 100) {
+        alert("Enter a valid number");
+        return;
+    }
 
-createGrid();
+    grid_width = +gridDimensions 
+    grid_height = +gridDimensions;
+    container.textContent = '';
+    createGrid(grid_width, grid_height);
+});
+
+createGrid(grid_width, grid_height);
