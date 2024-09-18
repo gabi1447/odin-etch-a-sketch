@@ -21,11 +21,7 @@ body {
     /* flex: 1; */
     width: 65vw;
     height: 80vh;
-
-}
-
-.black {
-    background-color: black;
+    border: 1px solid black;
 }
 
 .title {

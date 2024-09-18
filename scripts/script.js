@@ -2,12 +2,25 @@ const container = document.querySelector(".container");
 const dimensionsButton = document.querySelector("#dimensions");
 let grid_width = 100;
 let grid_height = 100;
+let opacityValue = 0;
+
+function getRandomInt(maxValue) {
+    return Math.floor(Math.random() * maxValue);
+}
+
+function generateRandomRGB() {
+    const rgbArray = [];
+    for (let i = 0; i < 3; i++) {
+        rgbArray[i] = getRandomInt(255);
+    }
+    return rgbArray;
+}
 
 function createSquareDiv(divWidth, divHeight) {
     const div = document.createElement('div');
     div.style.width = `${divWidth}px`;
     div.style.height = `${divHeight}px`;
-    div.style.border = "1px solid black";
+    /* div.style.border = "1px solid black"; */
     return div;
 }
 
@@ -35,7 +48,18 @@ container.addEventListener("mouseover", event => {
     if (event.target === event.currentTarget) {
         return;
     }
-    event.target.classList.add("black");
+
+    if (opacityValue >= 1) {
+        opacityValue = 0;
+    }
+
+    const rgbArray = generateRandomRGB();
+    const red = rgbArray[0];
+    const green = rgbArray[1];
+    const blue = rgbArray[2];
+
+    event.target.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${opacityValue})`;
+    opacityValue += 0.1;
 });
 
 dimensionsButton.addEventListener("click", () => {
@@ -53,3 +77,5 @@ dimensionsButton.addEventListener("click", () => {
 });
 
 createGrid(grid_width, grid_height);
+
+// To-dos clear grid button increment opacity color
