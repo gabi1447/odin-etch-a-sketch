@@ -1,7 +1,7 @@
 const container = document.querySelector(".container");
 const dimensionsButton = document.querySelector("#dimensions");
-let grid_width = 100;
-let grid_height = 100;
+let grid_width = 16;
+let grid_height = 16;
 let opacityValue = 0;
 
 function getRandomInt(maxValue) {
